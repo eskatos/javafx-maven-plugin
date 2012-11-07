@@ -34,7 +34,7 @@
 
 <pre><code>&lt;groupId&gt;org.codeartisans.javafx&lt;/groupId&gt;
 &lt;artifactId&gt;javafx-maven-plugin&lt;/artifactId&gt;
-&lt;version&gt;1.0&lt;/version&gt;
+&lt;version&gt;1.1&lt;/version&gt;
 </code></pre>
 
 <h2>Usage</h2>
@@ -45,14 +45,14 @@
 
 <p>You must at least install JavaFX artifacts to your local repository prior to using this plugin as itself depends on them. Kind of chicken and egg issue yeah.</p>
 
-<p>Prior to this you must have a JavaFX runtime installed. Then, in a maven project directory run:</p>
+<p>Prior to this you must have a JavaFX runtime installed. Then, not in a maven project directory, run:</p>
 
-<pre><code>mvn javafx:install
+<pre><code>mvn org.codeartisans.javafx:javafx-deployer-maven-plugin:1.1:install
 </code></pre>
 
 <p>This will install the JavaFX from your installation to your local maven repository so your projects can refer to them. The dependency snippet will be shown:</p>
 
-<pre><code>[INFO] --- javafx-maven-plugin:1.0:install (default-cli) @ javafx-maven-plugin ---
+<pre><code>[INFO] --- javafx-deployer-maven-plugin:1.1:install (default-cli) @ javafx-deployer-maven-plugin ---
 [INFO] Will install JavaFX 2.2.1 artifacts to the local repository.
 [INFO] Installing /path/to/jdk1.7.0_07.jdk/jre/lib/jfxrt.jar to /home/you/.m2/repository/com/sun/javafx/jfxrt/2.2.1/jfxrt-2.2.1.jar
 [INFO] Installing /path/to/generated-jfxrt-2.2.1.pom to /home/you/.m2/repository/com/sun/javafx/jfxrt/2.2.1/jfxrt-2.2.1.pom
@@ -110,7 +110,7 @@
 <pre><code>&lt;plugin&gt;
     &lt;groupId&gt;org.codeartisans.javafx&lt;/groupId&gt;
     &lt;artifactId&gt;javafx-maven-plugin&lt;/artifactId&gt;
-    &lt;version&gt;1.0&lt;/version&gt;
+    &lt;version&gt;1.1&lt;/version&gt;
     &lt;executions&gt;
         &lt;execution&gt;
             &lt;phase&gt;package&lt;/phase&gt;
@@ -130,7 +130,7 @@
 <pre><code>&lt;plugin&gt;
     &lt;groupId&gt;org.codeartisans.javafx&lt;/groupId&gt;
     &lt;artifactId&gt;javafx-maven-plugin&lt;/artifactId&gt;
-    &lt;version&gt;1.0&lt;/version&gt;
+    &lt;version&gt;1.1&lt;/version&gt;
     &lt;executions&gt;
         &lt;execution&gt;
             &lt;phase&gt;package&lt;/phase&gt;
