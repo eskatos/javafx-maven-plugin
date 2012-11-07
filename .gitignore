@@ -1,1 +1,3 @@
 target
+javafx-maven-plugin/target
+javafx-deployer-maven-plugin/target

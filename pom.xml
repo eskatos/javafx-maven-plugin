@@ -9,15 +9,20 @@
     </parent>
 
     <groupId>org.codeartisans.javafx</groupId>
-    <artifactId>javafx-maven-plugin</artifactId>
-    <packaging>maven-plugin</packaging>
+    <artifactId>javafx-maven-plugin-parent</artifactId>
     <version>1.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <url>https://eskatos.github.com/javafx-maven-plugin</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <modules>
+        <module>javafx-maven-plugin</module>
+        <module>javafx-deployer-maven-plugin</module>
+    </modules>
 
     <licenses>
         <license>
@@ -61,42 +66,7 @@
                 </configuration>
             </plugin>
 
-            <plugin>
-                <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <goalPrefix>javafx</goalPrefix>
-                </configuration>
-            </plugin>
-
         </plugins>
     </build>
-
-    <dependencies>
-
-        <dependency>
-            <groupId>org.twdata.maven</groupId>
-            <artifactId>mojo-executor</artifactId>
-            <version>2.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>de.schlichtherle.truezip</groupId>
-            <artifactId>truezip-file</artifactId>
-            <version>7.6.6</version>
-        </dependency>
-        <dependency>
-            <groupId>de.schlichtherle.truezip</groupId>
-            <artifactId>truezip-driver-zip</artifactId>
-            <version>7.6.6</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sun.javafx</groupId>
-            <artifactId>ant-javafx</artifactId>
-            <version>[2.0,)</version>
-        </dependency>
-
-    </dependencies>
 
 </project>

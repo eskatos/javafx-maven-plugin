@@ -16,9 +16,7 @@
 package org.codeartisans.javafx.maven;
 
 import java.io.File;
-import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.BuildPluginManager;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
@@ -27,6 +25,7 @@ import static org.codeartisans.javafx.maven.InstallDeployUtils.*;
 
 /**
  * @goal deploy
+ * @requiresProject false
  */
 public class JavaFXDeployMojo
     extends AbstractMojo
@@ -42,17 +41,6 @@ public class JavaFXDeployMojo
      * @readonly
      */
     protected MavenProject project;
-    /**
-     * @parameter property="session"
-     * @required
-     * @readonly
-     */
-    protected MavenSession session;
-    /**
-     * @component
-     * @required
-     */
-    protected BuildPluginManager pluginManager;
 
     @Override
     public void execute()
