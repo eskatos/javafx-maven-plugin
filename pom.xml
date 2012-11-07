@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.codeartisans.javafx</groupId>
+    <artifactId>javafx-maven-plugin</artifactId>
+    <packaging>maven-plugin</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>${project.artifactId}</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <target>1.7</target>
+                    <source>1.7</source>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-plugin-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <goalPrefix>javafx</goalPrefix>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.twdata.maven</groupId>
+            <artifactId>mojo-executor</artifactId>
+            <version>2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>de.schlichtherle.truezip</groupId>
+            <artifactId>truezip-file</artifactId>
+            <version>7.6.6</version>
+        </dependency>
+        <dependency>
+            <groupId>de.schlichtherle.truezip</groupId>
+            <artifactId>truezip-driver-zip</artifactId>
+            <version>7.6.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.javafx</groupId>
+            <artifactId>ant-javafx</artifactId>
+            <version>[2.0,)</version>
+        </dependency>
+
+    </dependencies>
+
+</project>
