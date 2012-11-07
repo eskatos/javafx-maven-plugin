@@ -4,7 +4,7 @@ This plugin is deployed to maven central.
 
     <groupId>org.codeartisans.javafx</groupId>
     <artifactId>javafx-maven-plugin</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
 ## Usage
 
@@ -20,7 +20,7 @@ Prior to this you must have a JavaFX runtime installed. Then, in a maven project
 
 This will install the JavaFX from your installation to your local maven repository so your projects can refer to them. The dependency snippet will be shown:
 
-    [INFO] --- javafx-maven-plugin:1.0-SNAPSHOT:install (default-cli) @ javafx-maven-plugin ---
+    [INFO] --- javafx-maven-plugin:1.0:install (default-cli) @ javafx-maven-plugin ---
     [INFO] Will install JavaFX 2.2.1 artifacts to the local repository.
     [INFO] Installing /path/to/jdk1.7.0_07.jdk/jre/lib/jfxrt.jar to /home/you/.m2/repository/com/sun/javafx/jfxrt/2.2.1/jfxrt-2.2.1.jar
     [INFO] Installing /path/to/generated-jfxrt-2.2.1.pom to /home/you/.m2/repository/com/sun/javafx/jfxrt/2.2.1/jfxrt-2.2.1.pom
@@ -76,7 +76,7 @@ You can directly use the dependency snippet shown above in your projects but can
     <plugin>
         <groupId>org.codeartisans.javafx</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
         <executions>
             <execution>
                 <phase>package</phase>
@@ -96,7 +96,7 @@ You can directly use the dependency snippet shown above in your projects but can
     <plugin>
         <groupId>org.codeartisans.javafx</groupId>
         <artifactId>javafx-maven-plugin</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
         <executions>
             <execution>
                 <phase>package</phase>
