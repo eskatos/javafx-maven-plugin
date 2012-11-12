@@ -16,7 +16,7 @@
     <div class="wrapper">
       <header>
         <h1>javafx-maven-plugin</h1>
-        <p></p>
+        <p>A Maven plugin to build JavaFX 2 Applications</p>
 
         <p class="view"><a href="https://github.com/eskatos/javafx-maven-plugin">View the Project on GitHub <small>eskatos/javafx-maven-plugin</small></a></p>
 
@@ -147,6 +147,39 @@
     &lt;/configuration&gt;
 &lt;/plugin&gt;
 </code></pre>
+
+<p>This would attach the following artifacts to the build:</p>
+
+<p><strong>Linux</strong></p>
+
+<ul>
+<li>
+<code>${artifactId}-${version}-jnlp.zip</code> - JNLP/Applet distribution</li>
+<li>
+<code>${artifactId}-${version}-linux.tar.gz</code> - Linux image distribution</li>
+<li>
+<code>${artifactId}-${version}-rpm.rpm</code> - Linux RPM package</li>
+</ul><p><strong>MacOSX</strong></p>
+
+<ul>
+<li>
+<code>${artifactId}-${version}-jnlp.zip</code> - JNLP/Applet distribution</li>
+<li>
+<code>${artifactId}-${version}-macosx.zip</code> - MacOSX .app distribution</li>
+<li>
+<code>${artifactId}-${version}-dmg.dmg</code> - MacOSX DMG distribution</li>
+</ul><p><strong>Windows</strong></p>
+
+<ul>
+<li>
+<code>${artifactId}-${version}-jnlp.zip</code> - JNLP/Applet distribution</li>
+<li>
+<code>${artifactId}-${version}-win.zip</code> - Windows image distribution</li>
+<li>
+<code>${artifactId}-${version}-msi.msi</code> - Windows MSI distribution</li>
+<li>
+<code>${artifactId}-${version}-installer.exe</code> - Windows installer distribution</li>
+</ul>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/eskatos">eskatos</a></p>
