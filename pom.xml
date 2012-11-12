@@ -10,7 +10,7 @@
 
     <groupId>org.codeartisans.javafx</groupId>
     <artifactId>javafx-maven-plugin-parent</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
     <packaging>pom</packaging>
     <name>${project.artifactId}</name>
     <url>https://eskatos.github.com/javafx-maven-plugin</url>
