@@ -134,4 +134,44 @@ This would attach the following artifacts to the build:
 - `${artifactId}-${version}-msi.msi` - Windows MSI distribution
 - `${artifactId}-${version}-installer.exe` - Windows installer distribution
 
+### Fine configuration
+
+Here are all the configuration properties available with their default values where applicable:
+
+    <plugin>
+        <groupId>org.codeartisans.javafx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+            <execution>
+                <phase>package</phase>
+                <goals>
+                    <goal>package</goal>
+                </goals>
+            </execution>
+        </executions>
+        <configuration>
+            <mainClass>${main.class}</mainClass>
+            <bundles>all</bundles>
+            <appId>${project.artifactId}</appId>
+            <appName>${project.artifactId}</appName>
+            <appDescription>${project.description}</appDescription>
+            <appCategory></appCategory>
+            <appVendor></appVendor>
+            <width></width>
+            <height></height>
+            <icons>
+                <icon>${baseDir}/src/main/resources/icon.png</icon>
+            </icons>
+            <allPermissions>false</allPermissions>
+            <preloaderClass></preloaderClass>
+            <jvmArgs>
+                <jvmArg></jvmArg>
+            <jvmArgs>
+            <jvmProps>
+                <propertyName>propertyValue</propertyName>
+            <jvmProps>
+        </configuration>
+    </plugin>
+
 

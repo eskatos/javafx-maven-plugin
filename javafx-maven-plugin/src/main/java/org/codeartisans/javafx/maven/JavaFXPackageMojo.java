@@ -25,6 +25,8 @@ import de.schlichtherle.truezip.file.TFile;
 import de.schlichtherle.truezip.file.TVFS;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.model.Build;
@@ -34,6 +36,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.MavenProjectHelper;
 import org.codehaus.plexus.util.FileUtils;
+import org.codehaus.plexus.util.StringUtils;
 
 /**
  * @goal package
@@ -44,19 +47,75 @@ public class JavaFXPackageMojo
 {
 
     /**
+     * @parameter property="verbose" default-value="true"
+     */
+    private Boolean verbose;
+    /**
      * @parameter property="mainClass"
      * @required
      */
     private String mainClass;
     /**
-     * @parameter property="bundleType" default-value="none"
+     * @parameter property="bundles" default-value="none"
      * @required
      */
     private String bundles;
     /**
-     * @parameter property="verbose" default-value="true"
+     * @parameter property="appId" default-value="${project.artifactId}"
+     * @required
      */
-    private Boolean verbose;
+    private String appId;
+    /**
+     * @parameter property="appName" default-value="${project.artifactId}"
+     * @required
+     */
+    private String appName;
+    /**
+     * @parameter property="appDescription" default-value="${project.description}"
+     * @required
+     */
+    private String appDescription;
+    /**
+     * @parameter property="appVendor"
+     */
+    private String appVendor;
+    /**
+     * @parameter property="appCategory"
+     */
+    private String appCategory;
+    /**
+     * @parameter property="appCopyright"
+     */
+    private String appCopyright;
+    /**
+     * @parameter property="width"
+     */
+    private Integer width;
+    /**
+     * @parameter property="height"
+     */
+    private Integer height;
+    /**
+     * @parameter property="icons"
+     */
+    private List<File> icons;
+    /**
+     * @parameter property="allPermissions" default-value="false"
+     * @required
+     */
+    private boolean allPermissions;
+    /**
+     * @parameter property="preloaderClass"
+     */
+    private String preloaderClass;
+    /**
+     * @parameter property="jvmArgs"
+     */
+    private List<String> jvmArgs;
+    /**
+     * @parameter property="jvmProps"
+     */
+    private Map<String, String> jvmProps;
     /**
      * @parameter property="project"
      * @required
@@ -148,13 +207,60 @@ public class JavaFXPackageMojo
 
         DeployParams deployParams = new DeployParams();
         deployParams.setVerbose( verbose );
-        deployParams.setId( build.getFinalName() );
-        deployParams.setAppId( build.getFinalName() );
-        deployParams.setAppName( build.getFinalName() );
-        deployParams.setVersion( project.getVersion() );
-        deployParams.setTitle( build.getFinalName() );
-        deployParams.setDescription( build.getFinalName() );
         deployParams.setApplicationClass( mainClass );
+        deployParams.setId( appId );
+        deployParams.setAppId( appId );
+        deployParams.setAppName( appName );
+        deployParams.setVersion( project.getVersion() );
+        deployParams.setTitle( appName );
+        deployParams.setDescription( appDescription );
+        if( !StringUtils.isEmpty( appVendor ) )
+        {
+            deployParams.setVendor( appVendor );
+        }
+        if( !StringUtils.isEmpty( appCategory ) )
+        {
+            deployParams.setCategory( appCategory );
+        }
+        if( !StringUtils.isEmpty( appCopyright ) )
+        {
+            deployParams.setCopyright( appCopyright );
+        }
+        if( width != null && width > 0 )
+        {
+            deployParams.setWidth( width );
+        }
+        if( height != null && height > 0 )
+        {
+            deployParams.setHeight( height );
+        }
+        deployParams.setAllPermissions( allPermissions );
+        if( !StringUtils.isEmpty( preloaderClass ) )
+        {
+            deployParams.setPreloader( preloaderClass );
+        }
+        if( jvmArgs != null )
+        {
+            for( String jvmArgument : jvmArgs )
+            {
+                deployParams.addJvmArg( jvmArgument );
+            }
+        }
+        if( jvmProps != null )
+        {
+            for( Map.Entry<String, String> jvmProp : jvmProps.entrySet() )
+            {
+                deployParams.addJvmProperty( jvmProp.getKey(), jvmProp.getValue() );
+            }
+        }
+        if( icons != null )
+        {
+            for( File icon : icons )
+            {
+                deployParams.addIcon( icon.getAbsolutePath(), null, -1, -1, -1, DeployParams.RunMode.ALL );
+            }
+        }
+
         deployParams.setOutdir( javaFxNativeDir );
         deployParams.setOutfile( build.getFinalName() );
         deployParams.setBundleType( bundleType );
