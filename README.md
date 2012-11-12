@@ -113,4 +113,25 @@ You can directly use the dependency snippet shown above in your projects but can
         </configuration>
     </plugin>
 
+This would attach the following artifacts to the build:
+
+**Linux**
+
+- `${artifactId}-${version}-jnlp.zip` - JNLP/Applet distribution
+- `${artifactId}-${version}-linux.tar.gz` - Linux image distribution
+- `${artifactId}-${version}-rpm.rpm` - Linux RPM package
+
+**MacOSX**
+
+- `${artifactId}-${version}-jnlp.zip` - JNLP/Applet distribution
+- `${artifactId}-${version}-macosx.zip` - MacOSX .app distribution
+- `${artifactId}-${version}-dmg.dmg` - MacOSX DMG distribution
+
+**Windows**
+
+- `${artifactId}-${version}-jnlp.zip` - JNLP/Applet distribution
+- `${artifactId}-${version}-win.zip` - Windows image distribution
+- `${artifactId}-${version}-msi.msi` - Windows MSI distribution
+- `${artifactId}-${version}-installer.exe` - Windows installer distribution
+
 
