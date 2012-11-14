@@ -157,6 +157,11 @@ public class JavaFXPackageMojo
         CreateJarParams createJar = new CreateJarParams();
         createJar.setVerbose( verbose );
         createJar.setApplicationClass( mainClass );
+        if( !StringUtils.isEmpty( preloaderClass ) )
+        {
+            createJar.setPreloader( preloaderClass );
+        }
+
         createJar.setOutdir( javaFxCreateJarDir );
         createJar.setOutfile( javaFxJarName );
         createJar.addResource( unpackedJarDir, "" );
