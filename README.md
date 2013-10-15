@@ -1,3 +1,10 @@
+
+# This plugin is not mainained anymore in favor of Daniel Zwolensk's plugin. 
+
+# Use this one: http://zenjava.com/javafx/maven/
+
+----
+
 # javafx-maven-plugin
 
 This plugin is deployed to maven central.
