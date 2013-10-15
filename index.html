@@ -4,228 +4,50 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>javafx-maven-plugin by eskatos</title>
-
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
   </head>
   <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/eskatos/javafx-maven-plugin">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/eskatos/javafx-maven-plugin/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/eskatos/javafx-maven-plugin/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
     <div class="wrapper">
-      <header>
-        <h1>javafx-maven-plugin</h1>
-        <p>A Maven plugin to build and release your JavaFX 2 Applications</p>
 
-        <p class="view"><a href="https://github.com/eskatos/javafx-maven-plugin">View the Project on GitHub <small>eskatos/javafx-maven-plugin</small></a></p>
-
-
-        <ul>
-          <li><a href="https://github.com/eskatos/javafx-maven-plugin/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/eskatos/javafx-maven-plugin/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/eskatos/javafx-maven-plugin">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
       <section>
-        <h1>javafx-maven-plugin</h1>
+        <div id="title">
+          <h1>javafx-maven-plugin</h1>
+          <p>A Maven plugin to build and release your JavaFX 2 Applications</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/eskatos">eskatos</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
 
-<p>This plugin is deployed to maven central.</p>
+        <h1>
+<a name="this-plugin-is-not-mainained-anymore-in-favor-of-daniel-zwolensks-plugin" class="anchor" href="#this-plugin-is-not-mainained-anymore-in-favor-of-daniel-zwolensks-plugin"><span class="octicon octicon-link"></span></a>This plugin is not mainained anymore in favor of Daniel Zwolensk's plugin.</h1>
 
-<pre><code>&lt;groupId&gt;org.codeartisans.javafx&lt;/groupId&gt;
-&lt;artifactId&gt;javafx-maven-plugin&lt;/artifactId&gt;
-&lt;version&gt;1.2&lt;/version&gt;
-</code></pre>
-
-<h2>Usage</h2>
-
-<h3>JavaFX artifacts installation and deployment</h3>
-
-<p>JavaFX artifacts are not available in any public repository so special steps are needed to overcome this.</p>
-
-<p>You must at least install JavaFX artifacts to your local repository prior to using this plugin as itself depends on them. Kind of chicken and egg issue yeah.</p>
-
-<p>Prior to this you must have a JavaFX runtime installed. Then, not in a maven project directory, run:</p>
-
-<pre><code>mvn org.codeartisans.javafx:javafx-deployer-maven-plugin:1.2:install
-</code></pre>
-
-<p>This will install the JavaFX from your installation to your local maven repository so your projects can refer to them. The dependency snippet will be shown:</p>
-
-<pre><code>[INFO] --- javafx-deployer-maven-plugin:1.2:install (default-cli) @ javafx-deployer-maven-plugin ---
-[INFO] Will install JavaFX 2.2.1 artifacts to the local repository.
-[INFO] Installing /path/to/jdk1.7.0_07.jdk/jre/lib/jfxrt.jar to /home/you/.m2/repository/com/sun/javafx/jfxrt/2.2.1/jfxrt-2.2.1.jar
-[INFO] Installing /path/to/generated-jfxrt-2.2.1.pom to /home/you/.m2/repository/com/sun/javafx/jfxrt/2.2.1/jfxrt-2.2.1.pom
-[INFO] Installing /path/to/jdk1.7.0_07.jdk/lib/ant-javafx.jar to /home/you/.m2/repository/com/sun/javafx/ant-javafx/2.2.1/ant-javafx-2.2.1.jar
-[INFO] Installing /path/to/generated-ant-javafx-2.2.1.pom to /home/you/.m2/repository/com/sun/javafx/ant-javafx/2.2.1/ant-javafx-2.2.1.pom
-[INFO] You can now use the following dependency in jour JavaFX projects:
-    &lt;dependency&gt;
-        &lt;groupId&gt;com.sun.javafx&lt;/groupId&gt;
-        &lt;artifactId&gt;jfxrt&lt;/artifactId&gt;
-        &lt;version&gt;2.2.1&lt;/version&gt;
-        &lt;scope&gt;provided&lt;/scope&gt;
-    &lt;/dependency&gt;
-</code></pre>
-
-<p>You can directly use the dependency snippet shown above in your projects but can also use version ranges. Here is an example using JavaFX 2.0 or greater:</p>
-
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;com.sun.javafx&lt;/groupId&gt;
-    &lt;artifactId&gt;jfxrt&lt;/artifactId&gt;
-    &lt;version&gt;[2.0,)&lt;/version&gt;
-    &lt;scope&gt;provided&lt;/scope&gt;
-&lt;/dependency&gt;
-</code></pre>
-
-<h3>Use maven-exec-plugin to run your JavaFX Application</h3>
-
-<pre><code>&lt;plugin&gt;
-    &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
-    &lt;artifactId&gt;exec-maven-plugin&lt;/artifactId&gt;
-    &lt;version&gt;1.2.1&lt;/version&gt;
-    &lt;executions&gt;
-        &lt;execution&gt;
-            &lt;goals&gt;
-                &lt;goal&gt;java&lt;/goal&gt;
-            &lt;/goals&gt;
-        &lt;/execution&gt;
-    &lt;/executions&gt;
-    &lt;configuration&gt;
-        &lt;mainClass&gt;${main.class}&lt;/mainClass&gt;
-        &lt;classpathScope&gt;runtime&lt;/classpathScope&gt;
-        &lt;includePluginDependencies&gt;true&lt;/includePluginDependencies&gt;
-    &lt;/configuration&gt;
-    &lt;dependencies&gt;
-        &lt;dependency&gt;
-            &lt;groupId&gt;com.sun.javafx&lt;/groupId&gt;
-            &lt;artifactId&gt;jfxrt&lt;/artifactId&gt;
-            &lt;version&gt;[2.0,)&lt;/version&gt;
-        &lt;/dependency&gt;
-    &lt;/dependencies&gt;
-&lt;/plugin&gt;
-</code></pre>
-
-<h3>Enhance your JAR for JavaFX</h3>
-
-<pre><code>&lt;plugin&gt;
-    &lt;groupId&gt;org.codeartisans.javafx&lt;/groupId&gt;
-    &lt;artifactId&gt;javafx-maven-plugin&lt;/artifactId&gt;
-    &lt;version&gt;1.2&lt;/version&gt;
-    &lt;executions&gt;
-        &lt;execution&gt;
-            &lt;phase&gt;package&lt;/phase&gt;
-            &lt;goals&gt;
-                &lt;goal&gt;package&lt;/goal&gt;
-            &lt;/goals&gt;
-        &lt;/execution&gt;
-    &lt;/executions&gt;
-    &lt;configuration&gt;
-        &lt;mainClass&gt;${main.class}&lt;/mainClass&gt;
-    &lt;/configuration&gt;
-&lt;/plugin&gt;
-</code></pre>
-
-<h3>Package JavaFX distributions and installers</h3>
-
-<pre><code>&lt;plugin&gt;
-    &lt;groupId&gt;org.codeartisans.javafx&lt;/groupId&gt;
-    &lt;artifactId&gt;javafx-maven-plugin&lt;/artifactId&gt;
-    &lt;version&gt;1.2&lt;/version&gt;
-    &lt;executions&gt;
-        &lt;execution&gt;
-            &lt;phase&gt;package&lt;/phase&gt;
-            &lt;goals&gt;
-                &lt;goal&gt;package&lt;/goal&gt;
-            &lt;/goals&gt;
-        &lt;/execution&gt;
-    &lt;/executions&gt;
-    &lt;configuration&gt;
-        &lt;mainClass&gt;${main.class}&lt;/mainClass&gt;
-        &lt;!-- This will build and attach native images and installers --&gt;
-        &lt;!-- Can be all, installer, image or none, case insensitive. --&gt;
-        &lt;bundles&gt;all&lt;/bundles&gt;
-    &lt;/configuration&gt;
-&lt;/plugin&gt;
-</code></pre>
-
-<p>This would attach the following artifacts to the build:</p>
-
-<p><strong>Linux</strong></p>
-
-<ul>
-<li>
-<code>${artifactId}-${version}-jnlp.zip</code> - JNLP/Applet distribution</li>
-<li>
-<code>${artifactId}-${version}-linux.tar.gz</code> - Linux image distribution</li>
-<li>
-<code>${artifactId}-${version}-rpm.rpm</code> - Linux RPM package</li>
-</ul><p><strong>MacOSX</strong></p>
-
-<ul>
-<li>
-<code>${artifactId}-${version}-jnlp.zip</code> - JNLP/Applet distribution</li>
-<li>
-<code>${artifactId}-${version}-macosx.zip</code> - MacOSX .app distribution</li>
-<li>
-<code>${artifactId}-${version}-dmg.dmg</code> - MacOSX DMG distribution</li>
-</ul><p><strong>Windows</strong></p>
-
-<ul>
-<li>
-<code>${artifactId}-${version}-jnlp.zip</code> - JNLP/Applet distribution</li>
-<li>
-<code>${artifactId}-${version}-win.zip</code> - Windows image distribution</li>
-<li>
-<code>${artifactId}-${version}-msi.msi</code> - Windows MSI distribution</li>
-<li>
-<code>${artifactId}-${version}-installer.exe</code> - Windows installer distribution</li>
-</ul><h3>Fine configuration</h3>
-
-<p>Here are all the configuration properties available with their default values where applicable:</p>
-
-<pre><code>&lt;plugin&gt;
-    &lt;groupId&gt;org.codeartisans.javafx&lt;/groupId&gt;
-    &lt;artifactId&gt;javafx-maven-plugin&lt;/artifactId&gt;
-    &lt;version&gt;1.2&lt;/version&gt;
-    &lt;executions&gt;
-        &lt;execution&gt;
-            &lt;phase&gt;package&lt;/phase&gt;
-            &lt;goals&gt;
-                &lt;goal&gt;package&lt;/goal&gt;
-            &lt;/goals&gt;
-        &lt;/execution&gt;
-    &lt;/executions&gt;
-    &lt;configuration&gt;
-        &lt;mainClass&gt;${main.class}&lt;/mainClass&gt;
-        &lt;bundles&gt;all&lt;/bundles&gt;
-        &lt;appId&gt;${project.artifactId}&lt;/appId&gt;
-        &lt;appName&gt;${project.artifactId}&lt;/appName&gt;
-        &lt;appDescription&gt;${project.description}&lt;/appDescription&gt;
-        &lt;appCategory&gt;&lt;/appCategory&gt;
-        &lt;appVendor&gt;&lt;/appVendor&gt;
-        &lt;width&gt;&lt;/width&gt;
-        &lt;height&gt;&lt;/height&gt;
-        &lt;icons&gt;
-            &lt;icon&gt;${baseDir}/src/main/resources/icon.png&lt;/icon&gt;
-        &lt;/icons&gt;
-        &lt;allPermissions&gt;false&lt;/allPermissions&gt;
-        &lt;preloaderClass&gt;&lt;/preloaderClass&gt;
-        &lt;jvmArgs&gt;
-            &lt;jvmArg&gt;&lt;/jvmArg&gt;
-        &lt;jvmArgs&gt;
-        &lt;jvmProps&gt;
-            &lt;propertyName&gt;propertyValue&lt;/propertyName&gt;
-        &lt;jvmProps&gt;
-    &lt;/configuration&gt;
-&lt;/plugin&gt;
-</code></pre>
+<h1>
+<a name="use-this-one-httpzenjavacomjavafxmaven" class="anchor" href="#use-this-one-httpzenjavacomjavafxmaven"><span class="octicon octicon-link"></span></a>Use this one: <a href="http://zenjava.com/javafx/maven/">http://zenjava.com/javafx/maven/</a>
+</h1>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/eskatos">eskatos</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
+
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
